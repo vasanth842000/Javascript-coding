@@ -10,6 +10,9 @@
 //note  - error handling
 //  in failure scenario we can do one thing if promise rejetcs it come to catch block their you can assign empty value it take its promise was resolved then executes next api call .
 
+//real scenario where i used - delete multiple records items checkbox checked and delete , call multiple apis at same time run in parallel.
+
+//advantage is we have 3 apis each apis take to be resolved 3 sec overall 9s when we use promise.all only  3seconds that's the power.
 
 function MovieTicketbooking(){
     return new Promise((res,rej)=>{

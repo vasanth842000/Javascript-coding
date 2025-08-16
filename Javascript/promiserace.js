@@ -1,5 +1,5 @@
-//promise.allettled - wait for all promises to be settled(either it can be fullfilled or rejected ) ,  gives the result of each promises status / value / reason .
-//promise.allsettled is safer one - so better to use that one.
+//promise.race - returns the result of  first settled promise (either it can be fullfilled / rejected ).
+
 
 function MovieTicketbooking(){
     return new Promise((res,rej)=>{
@@ -21,8 +21,8 @@ function cabBooking(){
     return new Promise((res,rej)=>{
         setTimeout(() => {
             rej('cab was bookedd successfully.')
-        }, 3000);
+        }, 0);
     })
 }
 
-Promise.allSettled([MovieTicketbooking(),AmountWithdrawn(),cabBooking()]).then((results)=>console.log(results)).catch((err)=>console.log(err))
+Promise.race([MovieTicketbooking(),AmountWithdrawn(),cabBooking()]).then((results)=>console.log(results)).catch((err)=>console.log(err))
