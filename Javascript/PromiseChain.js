@@ -8,6 +8,11 @@
 // Promises types like all , allsettled , any , race - run in parallel to fetch the data from different apis.
 // promise chain run one by i mean it won't run in parallel
 
+//disadvantages:
+// hard to maintain
+//hard to debug
+//hard to read/understanding
+
 
 function BookingFlight(){
     return new Promise((res,rej)=>{
