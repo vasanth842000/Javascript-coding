@@ -1,35 +1,38 @@
-//promise chain examples..
+//When you use promise :
 
-function Tamil(){
-    return new Promise((resolve,reject)=>{
+// i use promises for  when i do multiple asynchrnous tasks like api calls that can run in parallel .
+// for example ussing promise.all -  to fetch the data from different api's at the same time.
+//promise.all - wait for all promise to finish , if anything fails rejects it immediately . you don't get other results;
+
+//if all succeed - you get on array of results;
+//if one fails entire promise.all rejects it.
+
+//note  - error handling
+//  in failure scenario we can do one thing if promise rejetcs it come to catch block their you can assign empty value it take its promise was resolved then executes next api call .
+
+
+function MovieTicketbooking(){
+    return new Promise((res,rej)=>{
         setTimeout(() => {
-            resolve(90)
-        }, 1000);
-    })
-}
-function English(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(() => {
-            resolve(95)
-        }, 1000);
-    })
-}
-function Maths(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(() => {
-            resolve(100)
+            res('movie ticket is booked..');
         }, 2000);
     })
 }
 
-Promise.all([Tamil(),English(),Maths()]).then(
-    (([mark1,mark2,mark3])=>{
-         console.log('Tamil Mark:',mark1),
-            console.log('English Mark:',mark2),
-            console.log('Maths Mark:',mark3)
-                 return new Promise((res,rej)=>{
-                res((mark1+mark2+mark3));
-            })
+function AmountWithdrawn(){
+    return new Promise((res,rej)=>{
+        setTimeout(() => {
+            res('amount was withdraw sucessfully');
+        }, 3000);
     })
-        
-).then((total)=>console.log(total));
+}
+
+function cabBooking(){
+    return new Promise((res,rej)=>{
+        setTimeout(() => {
+            res('cab was bookedd successfully.')
+        }, 3000);
+    })
+}
+
+Promise.all([MovieTicketbooking(),AmountWithdrawn(),cabBooking()]).then((results)=>console.log(results)).catch((err)=>console.log(err))
